@@ -5,6 +5,9 @@ def gv
 
 pipeline {
     agent any
+    tools {
+    maven 'maven_3.8.4'
+    }
     stages {
         stage("init") {
             steps {
@@ -24,7 +27,7 @@ pipeline {
         stage("build image") {
             steps {
                 script {
-                buildImage()
+                buildImage '40.83.250.80:8083/java-maven-app:2.0'
                 }
             }
         }
